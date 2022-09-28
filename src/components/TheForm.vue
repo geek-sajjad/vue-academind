@@ -1,16 +1,16 @@
 <template>
-  <form>
+  <form @submit.prevent="submitForm">
     <div class="form-control">
       <label for="user-name">Your Name</label>
-      <input id="user-name" name="user-name" type="text" />
+      <input id="user-name" name="user-name" type="text" v-model="userName" />
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
-      <input id="age" name="age" type="number" />
+      <input id="age" name="age" type="number" v-model="userAge" />
     </div>
     <div class="form-control">
       <label for="referrer">How did you hear about us?</label>
-      <select id="referrer" name="referrer">
+      <select id="referrer" name="referrer" v-model="referrer">
         <option value="google">Google</option>
         <option value="wom">Word of mouth</option>
         <option value="newspaper">Newspaper</option>
@@ -19,38 +19,102 @@
     <div class="form-control">
       <h2>What are you interested in?</h2>
       <div>
-        <input id="interest-news" name="interest" type="checkbox" />
+        <input
+          id="interest-news"
+          v-model="interest"
+          value="interst"
+          name="interest"
+          type="checkbox"
+        />
         <label for="interest-news">News</label>
       </div>
       <div>
-        <input id="interest-tutorials" name="interest" type="checkbox" />
+        <input
+          id="interest-tutorials"
+          v-model="interest"
+          value="tut"
+          name="interest"
+          type="checkbox"
+        />
         <label for="interest-tutorials">Tutorials</label>
       </div>
       <div>
-        <input id="interest-nothing" name="interest" type="checkbox" />
+        <input
+          id="interest-nothing"
+          v-model="interest"
+          value="nothing"
+          name="interest"
+          type="checkbox"
+        />
         <label for="interest-nothing">Nothing</label>
       </div>
     </div>
     <div class="form-control">
       <h2>How do you learn?</h2>
       <div>
-        <input id="how-video" name="how" type="radio" />
+        <input
+          id="how-video"
+          name="how"
+          value="video"
+          v-model="how"
+          type="radio"
+        />
         <label for="how-video">Video Courses</label>
       </div>
       <div>
-        <input id="how-blogs" name="how" type="radio" />
+        <input
+          id="how-blogs"
+          name="how"
+          value="blog"
+          v-model="how"
+          type="radio"
+        />
         <label for="how-blogs">Blogs</label>
       </div>
       <div>
-        <input id="how-other" name="how" type="radio" />
+        <input
+          id="how-other"
+          name="how"
+          value="other"
+          v-model="how"
+          type="radio"
+        />
         <label for="how-other">Other</label>
       </div>
+    </div>
+    <div class="form-control">
+      <label for="confirm">Confirm the terms?</label>
+      <input type="checkbox" v-model="confirm" id="confirm" />
     </div>
     <div>
       <button>Save Data</button>
     </div>
   </form>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      userName: '',
+      userAge: null,
+      referrer: 'wom',
+      interest: [],
+      how: null,
+      confirm: false,
+    };
+  },
+  methods: {
+    submitForm() {
+      // console.log('hwo : ', this.how);
+      // this.how = null;
+      // console.log('interstes : ', this.interest);
+      // this.interest = [];
+      console.log('confirm: ', this.confirm);
+      this.confirm = false;
+    },
+  },
+};
+</script>
 
 <style scoped>
 form {
