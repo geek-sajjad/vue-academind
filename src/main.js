@@ -13,11 +13,16 @@ const router = createRouter({
       component: TeamsList,
     },
     {
+      path: '/teams',
+      component: TeamsList,
+    },
+    {
       path: '/users',
       component: UsersList,
     },
   ],
   history: createWebHistory(),
+  linkActiveClass: 'active',
 });
 
 app.use(router);
